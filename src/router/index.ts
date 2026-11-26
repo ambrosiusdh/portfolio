@@ -3,6 +3,7 @@ import {
   createWebHistory,
   type RouteLocationNormalized,
 } from 'vue-router'
+import { projectRouteName, projects } from '../data/projects'
 import { i18n } from '../i18n'
 import PortfolioPage from '../pages/PortfolioPage.vue'
 
@@ -13,6 +14,25 @@ export const router = createRouter({
       path: '/:locale(ja)?',
       children: [
         { path: '', name: 'home', component: PortfolioPage },
+        {
+          path: 'projects',
+          meta: { section: 'projects' },
+          children: [
+            {
+              path: '',
+              name: 'projects',
+              component: () => import('../pages/ProjectsPage.vue'),
+              meta: { titleKey: 'projects.title' },
+            },
+            ...projects.map((project) => ({
+              path: project.slug,
+              name: projectRouteName(project.slug),
+              component: () => import('../pages/ProjectDetailPage.vue'),
+              props: { project },
+              meta: { titleKey: `projects.items.${project.slug}.title` },
+            })),
+          ],
+        },
         {
           path: 'design-system',
           name: 'design-system',

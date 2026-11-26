@@ -21,6 +21,10 @@ English uses `/` and `/design-system`. Japanese uses `/ja` and `/ja/design-syste
 
 Add user-facing text to both catalogs in `src/i18n/messages` and read it with Vue I18n in components. Add new pages under the shared locale route in `src/router/index.ts` so both languages use the same page component.
 
+## Projects
+
+The showcase is available at `/projects` and `/ja/projects`. Add a project slug, technologies, and repository links to `src/data/projects.ts`, then add the corresponding title, summary, and case study to both message catalogs. The router builds both detail URLs from the project slug.
+
 ## Verification
 
 ```sh
