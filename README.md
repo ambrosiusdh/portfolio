@@ -11,6 +11,10 @@ npm ci
 npm run dev
 ```
 
+## Design system
+
+Open `/design-system` in the running app to review the color palette, responsive typography, spacing scale, and component examples. Semantic CSS custom properties live in `src/assets/_tokens.scss`. The components in `src/components/common` consume those properties and accept content through slots. Use `BaseButton` for actions, ordinary links for navigation, `BaseCard` to group related content, and `BaseTag` for short labels.
+
 ## Verification
 
 ```sh
