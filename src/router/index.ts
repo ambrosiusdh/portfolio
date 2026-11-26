@@ -11,7 +11,21 @@ export const router = createRouter({
       component: () => import('../pages/DesignSystemPage.vue'),
       meta: { title: 'Design system | Portfolio' },
     },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('../pages/NotFoundPage.vue'),
+      meta: { title: 'Page not found | Portfolio' },
+    },
   ],
+  scrollBehavior(to, _from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    }
+
+    const target = document.getElementById(to.hash.slice(1))
+    return target ? { el: target } : { top: 0, left: 0 }
+  },
 })
 
 router.afterEach((to, _from, failure) => {

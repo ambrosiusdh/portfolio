@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
 import BaseButton from '../components/common/BaseButton.vue'
 import BaseCard from '../components/common/BaseCard.vue'
 import BaseTag from '../components/common/BaseTag.vue'
@@ -19,24 +18,19 @@ const exampleShown = ref(false)
 </script>
 
 <template>
-  <main class="design-system">
+  <div>
     <header class="intro">
-      <RouterLink class="home-link" :to="{ name: 'home' }"
-        >Portfolio</RouterLink
-      >
-      <div class="intro-content">
-        <div>
-          <h1>Design system</h1>
-          <p>Shared colors, type, spacing and components for the portfolio.</p>
-        </div>
-
-        <nav class="section-links" aria-label="On this page">
-          <a href="#color">Color</a>
-          <a href="#typography">Typography</a>
-          <a href="#spacing">Spacing</a>
-          <a href="#components">Components</a>
-        </nav>
+      <div>
+        <h1>Design system</h1>
+        <p>Shared colors, type, spacing and components for the portfolio.</p>
       </div>
+
+      <nav class="section-links" aria-label="On this page">
+        <a href="#color">Color</a>
+        <a href="#typography">Typography</a>
+        <a href="#spacing">Spacing</a>
+        <a href="#components">Components</a>
+      </nav>
     </header>
 
     <section class="catalog-section" aria-labelledby="color">
@@ -137,38 +131,17 @@ const exampleShown = ref(false)
         </BaseCard>
       </div>
     </section>
-  </main>
+  </div>
 </template>
 
 <style scoped lang="scss">
-.design-system {
-  max-inline-size: calc(var(--width-content) + 2 * var(--space-gutter));
-  margin-inline: auto;
-  padding-inline: var(--space-gutter);
-  padding-block-end: var(--space-8);
-}
-
 .intro {
-  padding-block-start: var(--space-4);
-}
-
-.home-link {
-  display: inline-flex;
-  min-block-size: var(--size-control);
-  align-items: center;
-  color: var(--color-text);
-  font-weight: 650;
-}
-
-.intro-content {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: end;
   gap: var(--space-5);
-  margin-block-start: var(--space-3);
-  padding-block: clamp(2rem, 6vw, 5rem) var(--space-6);
-  border-block-start: 1px solid var(--color-divider);
+  padding-block-end: var(--space-6);
 }
 
 h1,
