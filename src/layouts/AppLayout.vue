@@ -63,6 +63,15 @@ watch(
           {{ t('site.name') }}
         </RouterLink>
         <div class="site-nav-links">
+          <RouterLink
+            class="nav-link"
+            :class="{
+              'nav-link--section-active': route.meta.section === 'projects',
+            }"
+            :to="{ name: 'projects' }"
+          >
+            {{ t('projects.title') }}
+          </RouterLink>
           <RouterLink class="nav-link" :to="{ name: 'design-system' }">
             {{ t('designSystem.title') }}
           </RouterLink>
@@ -147,6 +156,7 @@ header {
 
 .site-nav a[aria-current='page'],
 .site-nav a:hover,
+.site-nav .nav-link--section-active,
 .site-nav .language-link {
   color: var(--color-accent);
   text-decoration: underline;

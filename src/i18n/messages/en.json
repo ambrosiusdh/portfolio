@@ -8,6 +8,7 @@
   "home": {
     "role": "Software Development Engineer",
     "description": "I build backend services with Java and Spring Boot. My work in banking and e-commerce has covered customer onboarding, authentication, event-driven messaging, and warehouse systems.",
+    "projectsLink": "Explore projects",
     "locationLabel": "Based in",
     "location": "Jakarta, Indonesia",
     "relocationLabel": "Relocation",
@@ -48,6 +49,45 @@
             "migration": "Migrated production applications to Vue 3, upgraded a JSP application to Spring Boot 3, and mentored junior frontend engineers."
           }
         }
+      }
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Case studies in retail software and bilingual frontend development.",
+    "back": "All projects",
+    "technologies": "Technologies",
+    "resources": "Project resources",
+    "sourceCode": "Source code",
+    "repositories": {
+      "backend": "Backend on GitHub",
+      "frontend": "Frontend on GitHub",
+      "portfolio": "Portfolio on GitHub"
+    },
+    "sections": {
+      "problem": "Problem",
+      "contribution": "My contribution",
+      "decisions": "Technical decisions",
+      "outcome": "Outcome"
+    },
+    "items": {
+      "bloom-app": {
+        "title": "Bloom App",
+        "category": "Retail software",
+        "summary": "A point-of-sale and inventory system for family-run retail stores.",
+        "problem": "Staff needed to record sales, see what was in stock, and trace inventory changes when quantities did not match.",
+        "contribution": "I built a React cashier interface and a Spring Boot backend for sales, stock tracking, and reporting. I also implemented an inventory movement history with quantities, movement types, transaction references, and timestamps.",
+        "decisions": "I centralized stock changes in an inventory service and made sales processing transactional. PostgreSQL row locks serialize concurrent updates to the same stock record so one sale cannot overwrite another sale's inventory change.",
+        "outcome": "Family-run stores use Bloom App for daily sales, stock tracking, and reporting. The movement history gives staff a record they can use to investigate stock discrepancies."
+      },
+      "portfolio": {
+        "title": "Bilingual Portfolio",
+        "category": "Frontend engineering",
+        "summary": "An English and Japanese engineering portfolio with shareable links and automated checks.",
+        "problem": "I needed a portfolio that recruiters could read and share in either language. A shared link needed to preserve the language and the section the reader was viewing.",
+        "contribution": "I built the Vue and TypeScript site, its responsive layout and reusable components, and the verification workflow for production builds.",
+        "decisions": "The URL selects the language, with Japanese pages under /ja. Both languages use the same Vue components and message schema. Playwright verifies the compiled site through Vite Preview.",
+        "outcome": "Visitors can open a page directly or switch languages while keeping their place. GitHub Actions runs formatting, linting, type checking, unit tests, the production build, and browser tests for pull requests into main."
       }
     }
   },

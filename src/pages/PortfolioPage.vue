@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { RouterLink } from 'vue-router'
 import BaseCard from '../components/common/BaseCard.vue'
 import BaseTag from '../components/common/BaseTag.vue'
 import { experience, profileName, skillGroups } from '../data/portfolio'
@@ -28,6 +29,9 @@ function formatMonth(month: string) {
         <p class="profile-role">{{ t('home.role') }}</p>
         <h1 id="profile-name" lang="id">{{ profileName }}</h1>
         <p class="profile-description">{{ t('home.description') }}</p>
+        <RouterLink class="project-link" :to="{ name: 'projects' }">
+          {{ t('home.projectsLink') }}
+        </RouterLink>
       </div>
 
       <BaseCard class="profile-details">
@@ -143,6 +147,14 @@ h1 {
   margin-block-start: var(--space-5);
   color: var(--color-muted);
   font-size: var(--text-lead);
+}
+
+.project-link {
+  display: inline-flex;
+  min-block-size: var(--size-control);
+  align-items: center;
+  margin-block-start: var(--space-3);
+  font-weight: 600;
 }
 
 .profile-details dl {
