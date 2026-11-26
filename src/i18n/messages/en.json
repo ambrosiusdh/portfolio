@@ -1,0 +1,62 @@
+{
+  "site": {
+    "name": "Portfolio",
+    "primaryNavigation": "Primary",
+    "skipToMain": "Skip to main content",
+    "backToTop": "Back to top"
+  },
+  "home": {
+    "description": "This portfolio is under construction."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you requested may have moved or the address may be incorrect.",
+    "homeLink": "Return to the portfolio"
+  },
+  "designSystem": {
+    "title": "Design system",
+    "description": "Shared colors, type, spacing and components for the portfolio.",
+    "sectionNavigation": "On this page",
+    "sections": {
+      "color": "Color",
+      "typography": "Typography",
+      "spacing": "Spacing",
+      "components": "Components"
+    },
+    "colors": {
+      "canvas": "Canvas",
+      "surface": "Surface",
+      "text": "Text",
+      "muted": "Muted text",
+      "border": "Border",
+      "accent": "Accent"
+    },
+    "type": {
+      "display": "Display",
+      "heading": "Heading",
+      "body": "Body",
+      "monospace": "Monospace",
+      "headingExample": "Engineering projects",
+      "bodyExample": "Explain the problem, your decisions and what changed."
+    },
+    "buttons": {
+      "title": "Buttons",
+      "description": "Use primary for the main action and secondary for supporting actions.",
+      "show": "Show example",
+      "reset": "Reset",
+      "unavailable": "Unavailable",
+      "shown": "Example shown.",
+      "empty": "No example selected."
+    },
+    "cards": {
+      "title": "Cards",
+      "description": "Group related content on a shared surface with consistent padding.",
+      "example": "Related content"
+    },
+    "tags": {
+      "title": "Tags",
+      "description": "Label a category or draw attention to a short piece of metadata.",
+      "featured": "Featured"
+    }
+  }
+}

@@ -124,3 +124,75 @@ test('previews the design system and operates button states by keyboard', async 
   await page.getByRole('link', { name: 'Portfolio', exact: true }).click()
   await expect(page).toHaveTitle('Portfolio')
 })
+
+test('switches languages without losing the page, query, or section', async ({
+  page,
+}) => {
+  await page.goto('/design-system?source=portfolio')
+  await page.getByRole('link', { name: 'Components' }).click()
+
+  const japanese = page.getByRole('link', { name: '日本語' })
+  await expect(japanese).toHaveAttribute('lang', 'ja')
+  await expect(japanese).toHaveAttribute('hreflang', 'ja')
+  await expect(japanese).toHaveAttribute(
+    'href',
+    '/ja/design-system?source=portfolio#components',
+  )
+  await japanese.focus()
+  await page.keyboard.press('Enter')
+
+  await expect(page).toHaveURL('/ja/design-system?source=portfolio#components')
+  await expect(page).toHaveTitle('デザインシステム | ポートフォリオ')
+  await expect(page.locator('html')).toHaveAttribute('lang', 'ja')
+  const main = page.getByRole('main')
+  await expect(main).toBeFocused()
+  await expect(
+    main.getByRole('heading', { name: 'コンポーネント' }),
+  ).toBeInViewport()
+  await expect(page.locator('html')).toHaveJSProperty(
+    'scrollWidth',
+    viewport.width,
+  )
+
+  await page.getByRole('button', { name: '例を表示' }).click()
+  await expect(page.getByRole('status')).toHaveText('例を表示しました。')
+
+  await page.goBack()
+  await expect(page).toHaveURL('/design-system?source=portfolio#components')
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en')
+  await page.goForward()
+  await expect(page).toHaveURL('/ja/design-system?source=portfolio#components')
+  await page.reload()
+  await expect(page).toHaveTitle('デザインシステム | ポートフォリオ')
+  await expect(
+    main.getByRole('heading', { name: 'コンポーネント' }),
+  ).toBeInViewport()
+
+  await page.getByRole('link', { name: 'English' }).click()
+  await expect(page).toHaveURL('/design-system?source=portfolio#components')
+  await expect(page).toHaveTitle('Design system | Portfolio')
+})
+
+test('uses Japanese for a direct visit and recovery from an unknown route', async ({
+  page,
+}) => {
+  await page.goto('/ja/missing/page')
+  await expect(page).toHaveTitle('ページが見つかりません | ポートフォリオ')
+  await expect(page.locator('html')).toHaveAttribute('lang', 'ja')
+  await expect(page.getByRole('link', { name: 'English' })).toHaveAttribute(
+    'href',
+    '/',
+  )
+
+  await page.getByRole('link', { name: 'ポートフォリオに戻る' }).click()
+  await expect(page).toHaveURL('/ja')
+  await expect(page).toHaveTitle('ポートフォリオ')
+  const primary = page.getByRole('navigation', { name: 'メインナビゲーション' })
+  await expect(
+    primary.getByRole('link', { name: 'ポートフォリオ' }),
+  ).toHaveAttribute('aria-current', 'page')
+
+  await primary.getByRole('link', { name: 'デザインシステム' }).click()
+  await expect(page).toHaveURL('/ja/design-system')
+  await expect(page.getByRole('link', { name: 'ページの先頭へ' })).toBeVisible()
+})

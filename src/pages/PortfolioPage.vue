@@ -1,6 +1,12 @@
+<script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+</script>
+
 <template>
   <div class="page-intro">
-    <h1>Portfolio</h1>
-    <p>This portfolio is under construction.</p>
+    <h1>{{ t('site.name') }}</h1>
+    <p>{{ t('home.description') }}</p>
   </div>
 </template>

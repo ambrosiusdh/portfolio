@@ -15,6 +15,12 @@ npm run dev
 
 Open `/design-system` in the running app to review the color palette, responsive typography, spacing scale, and component examples. Semantic CSS custom properties live in `src/assets/_tokens.scss`. The components in `src/components/common` consume those properties and accept content through slots. Use `BaseButton` for actions, ordinary links for navigation, `BaseCard` to group related content, and `BaseTag` for short labels.
 
+## Languages
+
+English uses `/` and `/design-system`. Japanese uses `/ja` and `/ja/design-system`. The language switch keeps the current page, or takes visitors to the translated home page from a page-not-found view. The URL preserves the language on refresh and when shared.
+
+Add user-facing text to both catalogs in `src/i18n/messages` and read it with Vue I18n in components. Add new pages under the shared locale route in `src/router/index.ts` so both languages use the same page component.
+
 ## Verification
 
 ```sh

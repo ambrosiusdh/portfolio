@@ -1,73 +1,78 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import BaseButton from '../components/common/BaseButton.vue'
 import BaseCard from '../components/common/BaseCard.vue'
 import BaseTag from '../components/common/BaseTag.vue'
 
-const colors = [
-  { label: 'Canvas', token: '--color-canvas' },
-  { label: 'Surface', token: '--color-surface' },
-  { label: 'Text', token: '--color-text' },
-  { label: 'Muted text', token: '--color-muted' },
-  { label: 'Border', token: '--color-border' },
-  { label: 'Accent', token: '--color-accent' },
-]
-
+const colors = ['canvas', 'surface', 'text', 'muted', 'border', 'accent']
+const sections = ['color', 'typography', 'spacing', 'components']
 const spacingSteps = [1, 2, 3, 4, 5, 6, 7, 8]
 const exampleShown = ref(false)
+const { t } = useI18n()
 </script>
 
 <template>
   <div>
     <header class="intro">
       <div>
-        <h1>Design system</h1>
-        <p>Shared colors, type, spacing and components for the portfolio.</p>
+        <h1>{{ t('designSystem.title') }}</h1>
+        <p>{{ t('designSystem.description') }}</p>
       </div>
 
-      <nav class="section-links" aria-label="On this page">
-        <a href="#color">Color</a>
-        <a href="#typography">Typography</a>
-        <a href="#spacing">Spacing</a>
-        <a href="#components">Components</a>
+      <nav
+        class="section-links"
+        :aria-label="t('designSystem.sectionNavigation')"
+      >
+        <a v-for="section in sections" :key="section" :href="`#${section}`">
+          {{ t(`designSystem.sections.${section}`) }}
+        </a>
       </nav>
     </header>
 
     <section class="catalog-section" aria-labelledby="color">
-      <h2 id="color">Color</h2>
+      <h2 id="color">{{ t('designSystem.sections.color') }}</h2>
       <ul class="palette" role="list">
-        <li v-for="color in colors" :key="color.token" class="swatch">
+        <li v-for="color in colors" :key="color" class="swatch">
           <span
             class="swatch-color"
-            :style="{ backgroundColor: `var(${color.token})` }"
+            :style="{ backgroundColor: `var(--color-${color})` }"
             aria-hidden="true"
           />
           <div class="swatch-caption">
-            <strong>{{ color.label }}</strong>
-            <code>{{ color.token }}</code>
+            <strong>{{ t(`designSystem.colors.${color}`) }}</strong>
+            <code>--color-{{ color }}</code>
           </div>
         </li>
       </ul>
     </section>
 
     <section class="catalog-section" aria-labelledby="typography">
-      <h2 id="typography">Typography</h2>
+      <h2 id="typography">{{ t('designSystem.sections.typography') }}</h2>
       <BaseCard>
         <dl class="type-samples">
           <div>
-            <dt>Display <code>--text-display</code></dt>
-            <dd class="sample-display">Portfolio</dd>
+            <dt>
+              {{ t('designSystem.type.display') }} <code>--text-display</code>
+            </dt>
+            <dd class="sample-display">{{ t('site.name') }}</dd>
           </div>
           <div>
-            <dt>Heading <code>--text-heading</code></dt>
-            <dd class="sample-heading">Engineering projects</dd>
+            <dt>
+              {{ t('designSystem.type.heading') }} <code>--text-heading</code>
+            </dt>
+            <dd class="sample-heading">
+              {{ t('designSystem.type.headingExample') }}
+            </dd>
           </div>
           <div>
-            <dt>Body <code>--text-body</code></dt>
-            <dd>Explain the problem, your decisions and what changed.</dd>
+            <dt>{{ t('designSystem.type.body') }} <code>--text-body</code></dt>
+            <dd>{{ t('designSystem.type.bodyExample') }}</dd>
           </div>
           <div>
-            <dt>Monospace <code>--font-mono</code></dt>
+            <dt>
+              {{ t('designSystem.type.monospace') }} <code>--font-mono</code>
+            </dt>
             <dd><code>npm run build</code></dd>
           </div>
         </dl>
@@ -75,7 +80,7 @@ const exampleShown = ref(false)
     </section>
 
     <section class="catalog-section" aria-labelledby="spacing">
-      <h2 id="spacing">Spacing</h2>
+      <h2 id="spacing">{{ t('designSystem.sections.spacing') }}</h2>
       <BaseCard>
         <ul class="space-samples" role="list">
           <li v-for="step in spacingSteps" :key="step">
@@ -91,42 +96,49 @@ const exampleShown = ref(false)
     </section>
 
     <section class="catalog-section" aria-labelledby="components">
-      <h2 id="components">Components</h2>
+      <h2 id="components">{{ t('designSystem.sections.components') }}</h2>
       <div class="component-grid">
         <BaseCard class="button-card">
-          <h3>Buttons</h3>
-          <p>
-            Use primary for the main action and secondary for supporting
-            actions.
-          </p>
+          <h3>{{ t('designSystem.buttons.title') }}</h3>
+          <p>{{ t('designSystem.buttons.description') }}</p>
           <div class="examples">
-            <BaseButton @click="exampleShown = true">Show example</BaseButton>
+            <BaseButton @click="exampleShown = true">{{
+              t('designSystem.buttons.show')
+            }}</BaseButton>
             <BaseButton variant="secondary" @click="exampleShown = false">
-              Reset
+              {{ t('designSystem.buttons.reset') }}
             </BaseButton>
-            <BaseButton disabled>Unavailable</BaseButton>
+            <BaseButton disabled>{{
+              t('designSystem.buttons.unavailable')
+            }}</BaseButton>
           </div>
           <p class="example-status" role="status">
-            {{ exampleShown ? 'Example shown.' : 'No example selected.' }}
+            {{
+              t(
+                exampleShown
+                  ? 'designSystem.buttons.shown'
+                  : 'designSystem.buttons.empty',
+              )
+            }}
           </p>
         </BaseCard>
 
         <BaseCard>
-          <h3>Cards</h3>
-          <p>
-            Group related content on a shared surface with consistent padding.
-          </p>
-          <BaseCard class="nested-card">Related content</BaseCard>
+          <h3>{{ t('designSystem.cards.title') }}</h3>
+          <p>{{ t('designSystem.cards.description') }}</p>
+          <BaseCard class="nested-card">{{
+            t('designSystem.cards.example')
+          }}</BaseCard>
         </BaseCard>
 
         <BaseCard>
-          <h3>Tags</h3>
-          <p>
-            Label a category or draw attention to a short piece of metadata.
-          </p>
+          <h3>{{ t('designSystem.tags.title') }}</h3>
+          <p>{{ t('designSystem.tags.description') }}</p>
           <div class="examples">
             <BaseTag>TypeScript</BaseTag>
-            <BaseTag tone="accent">Featured</BaseTag>
+            <BaseTag tone="accent">{{
+              t('designSystem.tags.featured')
+            }}</BaseTag>
           </div>
         </BaseCard>
       </div>
