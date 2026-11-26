@@ -1,0 +1,62 @@
+{
+  "site": {
+    "name": "ポートフォリオ",
+    "primaryNavigation": "メインナビゲーション",
+    "skipToMain": "メインコンテンツに移動",
+    "backToTop": "ページの先頭へ"
+  },
+  "home": {
+    "description": "このポートフォリオは現在制作中です。"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "description": "ページが移動したか、URLが間違っている可能性があります。",
+    "homeLink": "ポートフォリオに戻る"
+  },
+  "designSystem": {
+    "title": "デザインシステム",
+    "description": "ポートフォリオで使用する配色、文字スタイル、余白、コンポーネントをまとめています。",
+    "sectionNavigation": "このページの目次",
+    "sections": {
+      "color": "配色",
+      "typography": "タイポグラフィ",
+      "spacing": "余白",
+      "components": "コンポーネント"
+    },
+    "colors": {
+      "canvas": "ページ背景",
+      "surface": "要素の背景",
+      "text": "本文色",
+      "muted": "補足テキスト",
+      "border": "境界線",
+      "accent": "アクセント"
+    },
+    "type": {
+      "display": "大見出し",
+      "heading": "見出し",
+      "body": "本文",
+      "monospace": "等幅フォント",
+      "headingExample": "開発プロジェクト",
+      "bodyExample": "課題、判断の理由、変更の結果を説明します。"
+    },
+    "buttons": {
+      "title": "ボタン",
+      "description": "主要な操作にはプライマリボタンを、補助的な操作にはセカンダリボタンを使います。",
+      "show": "例を表示",
+      "reset": "リセット",
+      "unavailable": "利用不可",
+      "shown": "例を表示しました。",
+      "empty": "例が選択されていません。"
+    },
+    "cards": {
+      "title": "カード",
+      "description": "関連する内容を、内側の余白をそろえたカードにまとめます。",
+      "example": "関連コンテンツ"
+    },
+    "tags": {
+      "title": "タグ",
+      "description": "カテゴリを示したり、短い補足情報を目立たせたりするために使います。",
+      "featured": "注目"
+    }
+  }
+}
