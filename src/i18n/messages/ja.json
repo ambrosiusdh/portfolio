@@ -6,7 +6,50 @@
     "backToTop": "ページの先頭へ"
   },
   "home": {
-    "description": "このポートフォリオは現在制作中です。"
+    "role": "ソフトウェア開発エンジニア",
+    "description": "JavaとSpring Bootを使ったバックエンド開発に取り組んでいます。銀行とECの分野で、顧客の申込手続き、認証、イベント駆動型のメッセージング、倉庫管理システムの開発に携わってきました。",
+    "locationLabel": "拠点",
+    "location": "インドネシア・ジャカルタ",
+    "relocationLabel": "勤務地の希望",
+    "relocation": "日本への転居にも前向きです",
+    "sectionNavigation": "このページの目次",
+    "skills": {
+      "title": "技術スキル",
+      "groups": {
+        "backend": "バックエンド・API",
+        "data": "データベース・キャッシュ",
+        "frontend": "フロントエンド",
+        "delivery": "デプロイ・テスト・監視"
+      }
+    },
+    "experience": {
+      "title": "職務経歴",
+      "present": "現在",
+      "periodSeparator": "〜",
+      "roles": {
+        "banking": {
+          "title": "ソフトウェア開発エンジニア",
+          "highlights": {
+            "onboarding": "インドネシアとシンガポールの開発チームと連携し、定期預金のオンライン申込機能の設計・実装を主導しました。",
+            "workerRecovery": "PostgreSQLを使った既存のワーカーフレームワークを拡張し、申込処理の自動再試行と、停止したタスクの復旧機能を追加しました。"
+          }
+        },
+        "authentication": {
+          "title": "ソフトウェア開発エンジニア（認証チーム）",
+          "highlights": {
+            "signingKeys": "テナントごとのJWT認証を実装し、JWKSで公開鍵を配布することで署名鍵のローテーションに対応しました。",
+            "messageIsolation": "Kafkaを使ったメッセージング基盤で、即時性が求められるワンタイムパスワードの配信を一般通知から分離しました。"
+          }
+        },
+        "warehouse": {
+          "title": "ソフトウェア開発エンジニア（倉庫管理チーム）",
+          "highlights": {
+            "modernization": "倉庫管理システムのフロントエンド刷新を主導し、Vue 2からVue 3への段階的な移行を設計しました。",
+            "migration": "本番アプリケーションをVue 3に移行し、JSPアプリケーションをSpring Boot 3に更新しました。また、若手フロントエンドエンジニアの育成を担当しました。"
+          }
+        }
+      }
+    }
   },
   "notFound": {
     "title": "ページが見つかりません",

@@ -18,5 +18,5 @@ test('renders the portfolio heading inside the main landmark', async () => {
   const heading = container.querySelector('main h1')?.textContent
   app.unmount()
 
-  expect(heading).toBe('Portfolio')
+  expect(heading).toBe('Ambrosius David Haryono')
 })

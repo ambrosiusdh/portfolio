@@ -13,15 +13,66 @@ test('loads the production home page at a mobile viewport', async ({
   await expect(page.locator('html')).toHaveAttribute('lang', 'en')
   const heading = page
     .getByRole('main')
-    .getByRole('heading', { level: 1, name: 'Portfolio' })
+    .getByRole('heading', { level: 1, name: 'Ambrosius David Haryono' })
   await expect(heading).toBeVisible()
   await expect(page.getByRole('banner')).toBeVisible()
-  await expect(page.getByRole('contentinfo')).toBeInViewport()
+  await expect(page.getByRole('contentinfo')).toBeVisible()
+  await expect(
+    page
+      .getByRole('region', { name: 'Technical skills' })
+      .getByText('Java', { exact: true }),
+  ).toBeVisible()
   await expect(
     page.getByRole('navigation', { name: 'Primary' }).getByRole('link', {
       name: 'Portfolio',
     }),
   ).toHaveAttribute('aria-current', 'page')
+  await expect(page.locator('html')).toHaveJSProperty(
+    'scrollWidth',
+    viewport.width,
+  )
+})
+
+test('keeps the homepage section and localizes the career timeline when switching languages', async ({
+  page,
+}) => {
+  await page.goto('/')
+  const sectionLinks = page.getByRole('navigation', { name: 'On this page' })
+  await sectionLinks.getByRole('link', { name: 'Technical skills' }).click()
+  await expect(page).toHaveURL('/#skills')
+  await expect(
+    page.getByRole('heading', { name: 'Technical skills' }),
+  ).toBeFocused()
+
+  await sectionLinks.getByRole('link', { name: 'Work experience' }).click()
+  await expect(page).toHaveURL('/#experience')
+  const experience = page.getByRole('region', { name: 'Work experience' })
+  await expect(experience.getByRole('heading', { level: 3 })).toHaveText([
+    'OCBC Indonesia',
+    'Blibli',
+    'Blibli',
+  ])
+  await expect(experience.locator('time').first()).toHaveAttribute(
+    'datetime',
+    '2026-05',
+  )
+  await expect(experience.locator('time').first()).toHaveText('May 2026')
+  await expect(experience.getByText('Present', { exact: true })).toBeVisible()
+
+  await page.getByRole('link', { name: '日本語' }).click()
+  await expect(page).toHaveURL('/ja#experience')
+  await expect(page.locator('html')).toHaveAttribute('lang', 'ja')
+  await expect(
+    page.getByRole('heading', { name: '職務経歴', level: 2 }),
+  ).toBeInViewport()
+
+  const japaneseExperience = page.getByRole('region', { name: '職務経歴' })
+  await expect(japaneseExperience.locator('time').first()).toHaveText(
+    '2026年5月',
+  )
+  await expect(
+    japaneseExperience.getByText('現在', { exact: true }),
+  ).toBeVisible()
   await expect(page.locator('html')).toHaveJSProperty(
     'scrollWidth',
     viewport.width,

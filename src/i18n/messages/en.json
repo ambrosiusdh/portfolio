@@ -6,7 +6,50 @@
     "backToTop": "Back to top"
   },
   "home": {
-    "description": "This portfolio is under construction."
+    "role": "Software Development Engineer",
+    "description": "I build backend services with Java and Spring Boot. My work in banking and e-commerce has covered customer onboarding, authentication, event-driven messaging, and warehouse systems.",
+    "locationLabel": "Based in",
+    "location": "Jakarta, Indonesia",
+    "relocationLabel": "Relocation",
+    "relocation": "Open to relocating to Japan",
+    "sectionNavigation": "On this page",
+    "skills": {
+      "title": "Technical skills",
+      "groups": {
+        "backend": "Backend and APIs",
+        "data": "Databases and caching",
+        "frontend": "Frontend",
+        "delivery": "Delivery, testing, and monitoring"
+      }
+    },
+    "experience": {
+      "title": "Work experience",
+      "present": "Present",
+      "periodSeparator": "–",
+      "roles": {
+        "banking": {
+          "title": "Software Development Engineer",
+          "highlights": {
+            "onboarding": "Led the design and implementation of digital time deposit onboarding with engineering teams in Indonesia and Singapore.",
+            "workerRecovery": "Extended a PostgreSQL-backed worker framework with automatic retries and recovery for stalled onboarding tasks."
+          }
+        },
+        "authentication": {
+          "title": "Software Development Engineer, Authentication Squad",
+          "highlights": {
+            "signingKeys": "Implemented tenant-based JWT authentication and distributed verification keys through JWKS to support signing-key rotation.",
+            "messageIsolation": "Separated time-sensitive one-time passwords from general notifications in a Kafka messaging platform."
+          }
+        },
+        "warehouse": {
+          "title": "Software Development Engineer, Warehouse Squad",
+          "highlights": {
+            "modernization": "Led the frontend modernization of the warehouse management system and designed a gradual migration from Vue 2 to Vue 3.",
+            "migration": "Migrated production applications to Vue 3, upgraded a JSP application to Spring Boot 3, and mentored junior frontend engineers."
+          }
+        }
+      }
+    }
   },
   "notFound": {
     "title": "Page not found",
